@@ -1,0 +1,72 @@
+{
+  "app": {
+    "title": "Quran Agent",
+    "subtitle": "Intra-Quranic Tafsir",
+    "description": "Ask questions about verses, explore Quranic connections"
+  },
+  "search": {
+    "title": "Search verse",
+    "description": "Basic entry point for fast search via the Açık Kuran API.",
+    "placeholder": "e.g. faith, mercy, patience",
+    "submit": "Send",
+    "results": "Results",
+    "notes": "Notes",
+    "notesDescription": "Placeholder for tafsīr notes and verse links."
+  },
+  "chat": {
+    "placeholder": "Ask about a verse or topic... (e.g. Fatiha 1:7, what is faith?)",
+    "submit": "Send",
+    "loading": "Preparing response...",
+    "error": "An error occurred. Please try again.",
+    "empty": "No questions yet. Start above.",
+    "examplesLabel": "Examples"
+  },
+  "verse": {
+    "title": "Verse",
+    "arabic": "Arabic",
+    "transcription": "Transcription",
+    "translation": "Translation",
+    "footnotes": "Footnotes",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "roots": {
+    "title": "Root Analysis",
+    "word": "Word",
+    "root": "Root",
+    "meaning": "Meaning",
+    "noRoot": "No root"
+  },
+  "connections": {
+    "title": "Connected Verses",
+    "empty": "No connections found",
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "prose": {
+    "title": "Prose Companion",
+    "anchor": "Anchor Verse",
+    "connections": "Connections",
+    "synthesis": "Synthesis"
+  },
+  "nav": {
+    "badge": "Açık Kuran • Next.js",
+    "language": "Language",
+    "turkish": "Turkish",
+    "english": "English",
+    "github": "GitHub",
+    "attribution": "Açık Kuran API"
+  },
+  "errors": {
+    "notFound": "Verse not found",
+    "rateLimit": "Too many requests. Please wait.",
+    "serviceDown": "Service temporarily unavailable",
+    "networkError": "Network error. Check your connection.",
+    "retry": "Retry"
+  },
+  "loading": {
+    "verse": "Loading verse...",
+    "analysis": "Analyzing...",
+    "connections": "Finding connections..."
+  }
+}

@@ -1,3 +1,98 @@
+# Quran Agent | Kuran Ajanı
+
+A bilingual (Turkish/English) web app for intra-Quranic tafsir — ask questions about Quranic verses and receive structured interpretations based on Arabic root concordance and verse connections.
+
+> **Powered by [Açık Kuran API](https://acikkuran.com)** — all verse data, Arabic text, roots, and translations come directly from the API.
+
+## Features
+
+- Intra-Quranic Tafsir — Quran explains Quran (no opinion-based commentary)
+- Arabic with Full Diacritics — proper Quranic typography using Amiri font
+- Root Analysis — word-by-word Arabic root breakdown
+- Connected Verses — find verses sharing the same root words
+- Prose Companion — structured explanation: Anchor → Connections → Synthesis
+- Bilingual — Turkish and English support
+- Dark Mode — comfortable reading in any lighting
+
+## Prerequisites
+
+- Node.js 18+
+- Docker Desktop (for the Açık Kuran API)
+
+## Quick Start
+
+### 1. Clone and install
+
+```bash
+git clone <repo-url>
+cd quran-agent
+npm install
+```
+
+### 2. Start the Açık Kuran API
+
+```bash
+docker compose up -d
+```
+
+Wait ~15 seconds for the API to start, then verify:
+
+```bash
+curl http://localhost:3112/
+```
+
+### 3. Configure environment
+
+```bash
+cp .env.example .env.local
+```
+
+### 4. Start the app
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000/tr](http://localhost:3000/tr) (Turkish) or [http://localhost:3000/en](http://localhost:3000/en) (English).
+
+## Example Questions
+
+- `Fatiha 1:7` — Analyze the last verse of Al-Fatiha
+- `1:7` — Same as above (surah:verse format)
+- `rahman` — Search for verses about mercy
+- `iman` — Find verses about faith
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `ACIKKURAN_URL` | `http://localhost:3112` | Açık Kuran API URL |
+| `NEXT_PUBLIC_DEFAULT_LANGUAGE` | `tr` | Default language (tr/en) |
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: shadcn/ui + Tailwind CSS v4
+- **i18n**: next-intl (TR/EN)
+- **Arabic Font**: Amiri (Google Fonts)
+- **API**: [Açık Kuran API](https://github.com/ziegfiroyt/acikkuran-api)
+- **Caching**: LRU Cache (in-memory)
+
+## Attribution
+
+All Quranic data provided by **[Açık Kuran](https://acikkuran.com)** — an open-source Quran platform.
+
+- Default Turkish translation: Erhan Aktaş — Kerim Kur'an (Author ID: 105)
+- Default English translation: Edip-Layth (Author ID: 103)
+
+## License
+
+MIT — see [LICENSE](LICENSE)
+
+---
+
+*Original Next.js scaffold info below:*
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

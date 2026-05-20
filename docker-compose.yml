@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  acikkuran-api:
+    build:
+      context: /Users/rak/acikkuran-api
+      dockerfile: Dockerfile
+    ports:
+      - "3112:3112"
+    environment:
+      - HTTP_PORT=3112
+      - HTTP_HOST=0.0.0.0
+      - DB_URL=${ACIKKURAN_DB_URL:-postgres://test_user:enam114@test-db.acikkuran.com:27743/acikkuran_test_db}
+      - REDIS_URL=${REDIS_URL:-}
+      - ENVIRONMENT=development
+      - EXLUDED_AUTHOR_IDS=13,50
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3112/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    restart: unless-stopped

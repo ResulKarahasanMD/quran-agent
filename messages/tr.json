@@ -1,0 +1,72 @@
+{
+  "app": {
+    "title": "Kuran Ajanı",
+    "subtitle": "Kuran'ı Kuran ile tefsir",
+    "description": "Ayetler hakkında soru sorun, Kuran içi bağlantıları keşfedin"
+  },
+  "search": {
+    "title": "Ayet ara",
+    "description": "Açık Kuran API ile hızlı arama için temel alan.",
+    "placeholder": "Örn. iman, rahmet, sabır",
+    "submit": "Gönder",
+    "results": "Sonuçlar",
+    "notes": "Notlar",
+    "notesDescription": "Tefsir notları ve ayet bağlantıları için yer tutucu."
+  },
+  "chat": {
+    "placeholder": "Bir ayet veya konu sorun... (örn. Fatiha 1:7, iman nedir?)",
+    "submit": "Gönder",
+    "loading": "Yanıt hazırlanıyor...",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "empty": "Henüz soru sorulmadı. Yukarıdan başlayın.",
+    "examplesLabel": "Örnekler"
+  },
+  "verse": {
+    "title": "Ayet",
+    "arabic": "Arapça",
+    "transcription": "Transkripsiyon",
+    "translation": "Çeviri",
+    "footnotes": "Dipnotlar",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!"
+  },
+  "roots": {
+    "title": "Kök Analizi",
+    "word": "Kelime",
+    "root": "Kök",
+    "meaning": "Anlam",
+    "noRoot": "Kök yok"
+  },
+  "connections": {
+    "title": "Bağlantılı Ayetler",
+    "empty": "Bağlantı bulunamadı",
+    "expand": "Genişlet",
+    "collapse": "Daralt"
+  },
+  "prose": {
+    "title": "Tefsir Metni",
+    "anchor": "Çapa Ayet",
+    "connections": "Bağlantılar",
+    "synthesis": "Sentez"
+  },
+  "nav": {
+    "badge": "Açık Kuran • Next.js",
+    "language": "Dil",
+    "turkish": "Türkçe",
+    "english": "English",
+    "github": "GitHub",
+    "attribution": "Açık Kuran API"
+  },
+  "errors": {
+    "notFound": "Ayet bulunamadı",
+    "rateLimit": "Çok fazla istek. Lütfen bekleyin.",
+    "serviceDown": "Servis geçici olarak kullanılamıyor",
+    "networkError": "Ağ hatası. Bağlantınızı kontrol edin.",
+    "retry": "Tekrar Dene"
+  },
+  "loading": {
+    "verse": "Ayet yükleniyor...",
+    "analysis": "Analiz yapılıyor...",
+    "connections": "Bağlantılar aranıyor..."
+  }
+}
