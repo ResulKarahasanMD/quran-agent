@@ -19,11 +19,13 @@
     "loading": "Yanıt hazırlanıyor...",
     "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
     "empty": "Henüz soru sorulmadı. Yukarıdan başlayın.",
-    "examplesLabel": "Örnekler"
+    "examplesLabel": "Örnekler",
+    "connectionsFound": "{count} bağlantı bulundu"
   },
   "verse": {
     "title": "Ayet",
     "arabic": "Arapça",
+    "arabicSimplified": "Arapça (sade imla)",
     "transcription": "Transkripsiyon",
     "translation": "Çeviri",
     "footnotes": "Dipnotlar",

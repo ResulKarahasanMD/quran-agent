@@ -19,11 +19,13 @@
     "loading": "Preparing response...",
     "error": "An error occurred. Please try again.",
     "empty": "No questions yet. Start above.",
-    "examplesLabel": "Examples"
+    "examplesLabel": "Examples",
+    "connectionsFound": "{count, plural, one {# connection found} other {# connections found}}"
   },
   "verse": {
     "title": "Verse",
     "arabic": "Arabic",
+    "arabicSimplified": "Arabic (simplified)",
     "transcription": "Transcription",
     "translation": "Translation",
     "footnotes": "Footnotes",

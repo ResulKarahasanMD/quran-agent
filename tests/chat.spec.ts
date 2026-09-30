@@ -23,7 +23,8 @@ test.describe('Chat Interface', () => {
   test('example chip submits a verse query', async ({ page }) => {
     await page.goto('/tr');
     await page.getByRole('button', { name: 'Fatiha 1:7', exact: true }).click();
-    await expect(page.getByText(/connections found/i)).toBeVisible({ timeout: 30000 });
+    await expect(page.getByText(/bağlantı bulundu/i)).toBeVisible({ timeout: 30000 });
+    await expect(page.getByText('Fatiha — 1:7')).toBeVisible();
     await expect(page.getByRole('tab', { name: 'Ayet' })).toBeVisible();
   });
 });

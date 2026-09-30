@@ -158,7 +158,7 @@ export function ChatInterface({ onResponse, language }: ChatInterfaceProps) {
                       {message.role === 'user' ? message.content : ''}
                       {message.role === 'assistant' && message.response && (
                         <span className="block text-xs text-muted-foreground">
-                          ✓ {message.response.connections?.length ?? 0} connections found
+                          ✓ {t('connectionsFound', { count: message.response.connections?.length ?? 0 })}
                         </span>
                       )}
                     </p>
