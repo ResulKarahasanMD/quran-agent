@@ -17,7 +17,10 @@ A bilingual (Turkish/English) web app for intra-Quranic tafsir — ask questions
 ## Prerequisites
 
 - Node.js 18+
-- Docker Desktop (for the Açık Kuran API)
+- Docker (Docker Desktop or colima) for the Açık Kuran API container
+- PostgreSQL and Meilisearch on the host (e.g. Homebrew `postgresql@17` and `meilisearch`)
+
+The public Açık Kuran API and its test database are no longer available (2026-09), so the API runs locally against a database you build once.
 
 ## Quick Start
 
@@ -29,11 +32,24 @@ cd quran-agent
 npm install
 ```
 
-### 2. Start the Açık Kuran API
+### 2. Set up the Açık Kuran API
+
+Clone [ResulKarahasanMD/acikkuran-api](https://github.com/ResulKarahasanMD/acikkuran-api). Upstream `ziegfiroyt/acikkuran-api` has no `Dockerfile` and cannot connect to a local non-SSL Postgres. `docker-compose.yml` looks for the clone at `../../public/acikkuran-api`; set `ACIKKURAN_API_DIR` to use another path:
 
 ```bash
+git clone https://github.com/ResulKarahasanMD/acikkuran-api ../../public/acikkuran-api
+```
+
+Build the `acikkuran` database and the Meilisearch index by following `tools/build_db/README.md` in that repository. This is a one-time step; fetching all 6,236 verse pages at 2 requests/second takes about an hour.
+
+### 3. Start the Açık Kuran API
+
+```bash
+brew services run postgresql@17 meilisearch
 docker compose up -d
 ```
+
+The container reaches the host Postgres through `host.docker.internal`, using your shell user as the database role (the Homebrew default). If your database uses a different role, host, or name, set `ACIKKURAN_DB_URL`. `MEILI_HOST` and `ACIKKURAN_DB_SSL` can be overridden the same way.
 
 Wait ~15 seconds for the API to start, then verify:
 
@@ -41,13 +57,13 @@ Wait ~15 seconds for the API to start, then verify:
 curl http://localhost:3112/
 ```
 
-### 3. Configure environment
+### 4. Configure environment
 
 ```bash
 cp .env.example .env.local
 ```
 
-### 4. Start the app
+### 5. Start the app
 
 ```bash
 npm run dev
@@ -75,7 +91,7 @@ Open [http://localhost:3000/tr](http://localhost:3000/tr) (Turkish) or [http://l
 - **UI**: shadcn/ui + Tailwind CSS v4
 - **i18n**: next-intl (TR/EN)
 - **Arabic Font**: Amiri (Google Fonts)
-- **API**: [Açık Kuran API](https://github.com/ziegfiroyt/acikkuran-api)
+- **API**: [Açık Kuran API](https://github.com/ziegfiroyt/acikkuran-api), run from the [ResulKarahasanMD fork](https://github.com/ResulKarahasanMD/acikkuran-api) with a locally built database
 - **Caching**: LRU Cache (in-memory)
 
 ## Attribution

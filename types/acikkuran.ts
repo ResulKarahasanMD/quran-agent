@@ -34,7 +34,8 @@ export interface SurahAudio {
 
 export interface VerseData {
   id: number;
-  surah_id: number;
+  // Not sent by /surah/:id/verse/:n — the surah number is in `surah.id`
+  surah_id?: number;
   verse_number: number;
   verse: string;
   verse_simplified?: string;

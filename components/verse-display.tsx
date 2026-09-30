@@ -27,13 +27,16 @@ export function VerseDisplay({ verse, language, className }: VerseDisplayProps) 
   };
 
   const transcription = language === 'en' ? verse.transcription_en : verse.transcription;
+  const surahId = verse.surah?.id ?? verse.surah_id;
+  const surahName = language === 'en' ? verse.surah?.name_en : verse.surah?.name;
 
   return (
     <Card className={className}>
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">
-            {verse.surah?.name ?? `Surah ${verse.surah_id}`} — {verse.surah_id}:{verse.verse_number}
+            {surahName ? `${surahName} — ` : ''}
+            {surahId}:{verse.verse_number}
           </CardTitle>
           <div className="flex gap-2">
             <Badge variant="outline">{t('title')}</Badge>
@@ -65,7 +68,7 @@ export function VerseDisplay({ verse, language, className }: VerseDisplayProps) 
               onClick={() => setShowSimplified(!showSimplified)}
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
-              {showSimplified ? '▼' : '▶'} {t('arabic')} (simplified)
+              {showSimplified ? '▼' : '▶'} {t('arabicSimplified')}
             </button>
             {showSimplified && (
               <div
