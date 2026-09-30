@@ -1,21 +1,27 @@
-version: '3.8'
-
 services:
   acikkuran-api:
     build:
-      context: /Users/rak/acikkuran-api
+      # Local clone of github.com/ziegfiroyt/acikkuran-api (override with ACIKKURAN_API_DIR)
+      context: ${ACIKKURAN_API_DIR:-../../public/acikkuran-api}
       dockerfile: Dockerfile
     ports:
       - "3112:3112"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - HTTP_PORT=3112
       - HTTP_HOST=0.0.0.0
-      - DB_URL=${ACIKKURAN_DB_URL:-postgres://test_user:enam114@test-db.acikkuran.com:27743/acikkuran_test_db}
+      # The public test DB (test-db.acikkuran.com) no longer resolves (2026-09).
+      # Default to the host Postgres built by acikkuran-api/tools/build_db.
+      - DB_URL=${ACIKKURAN_DB_URL:-postgres://${USER}@host.docker.internal:5432/acikkuran}
+      - DB_SSL=${ACIKKURAN_DB_SSL:-false}
+      - MEILI_HOST=${MEILI_HOST:-http://host.docker.internal:7700}
       - REDIS_URL=${REDIS_URL:-}
       - ENVIRONMENT=development
       - EXLUDED_AUTHOR_IDS=13,50
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3112/"]
+      # 127.0.0.1, not localhost: Alpine resolves localhost to ::1 and the API binds IPv4 only
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3112/"]
       interval: 10s
       timeout: 5s
       retries: 5
