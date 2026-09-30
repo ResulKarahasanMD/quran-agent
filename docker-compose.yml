@@ -1,7 +1,8 @@
 services:
   acikkuran-api:
     build:
-      # Local clone of github.com/ziegfiroyt/acikkuran-api (override with ACIKKURAN_API_DIR)
+      # Clone of github.com/ResulKarahasanMD/acikkuran-api (override with ACIKKURAN_API_DIR).
+      # Upstream ziegfiroyt/acikkuran-api has no Dockerfile and ignores DB_SSL.
       context: ${ACIKKURAN_API_DIR:-../../public/acikkuran-api}
       dockerfile: Dockerfile
     ports:
@@ -12,8 +13,9 @@ services:
       - HTTP_PORT=3112
       - HTTP_HOST=0.0.0.0
       # The public test DB (test-db.acikkuran.com) no longer resolves (2026-09).
-      # Default to the host Postgres built by acikkuran-api/tools/build_db.
-      - DB_URL=${ACIKKURAN_DB_URL:-postgres://${USER}@host.docker.internal:5432/acikkuran}
+      # Default to the host Postgres built by acikkuran-api/tools/build_db. The role is
+      # the shell user (Homebrew initdb's superuser); set ACIKKURAN_DB_URL otherwise.
+      - DB_URL=${ACIKKURAN_DB_URL:-postgres://${USER:-postgres}@host.docker.internal:5432/acikkuran}
       - DB_SSL=${ACIKKURAN_DB_SSL:-false}
       - MEILI_HOST=${MEILI_HOST:-http://host.docker.internal:7700}
       - REDIS_URL=${REDIS_URL:-}
