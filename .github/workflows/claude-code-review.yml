@@ -18,8 +18,9 @@ jobs:
     #   github.event.pull_request.user.login == 'new-developer' ||
     #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
 
-    # Dependabot PRs cannot read Actions secrets, so the review would only fail there.
-    if: github.actor != 'dependabot[bot]'
+    # Dependabot and fork pull requests cannot read Actions secrets, so the review would
+    # only fail there. Skipping forks also keeps outside pull requests from starting the job.
+    if: github.actor != 'dependabot[bot]' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: read
