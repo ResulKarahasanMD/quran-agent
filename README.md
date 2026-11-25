@@ -27,7 +27,7 @@ The public Açık Kuran API and its test database are no longer available (2026-
 ### 1. Clone and install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/ResulKarahasanMD/quran-agent
 cd quran-agent
 npm install
 ```
